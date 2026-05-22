@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="A special birthday surprise" />
+  <title>Happy Birthday My Love ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@400;600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="warm-glow" aria-hidden="true"></div>
+  <div id="confetti-canvas" aria-hidden="true"></div>
+  <div class="hearts-bg" aria-hidden="true"></div>
+  <div class="stars-bg" aria-hidden="true"></div>
+
+  <button type="button" class="music-toggle" id="musicToggle" aria-label="Toggle background music" title="Music">
+    <span class="music-icon">🎵</span>
+  </button>
+
+  <main id="app">
+    <!-- 1. Birthday Cake -->
+    <section id="cake" class="page page--cake active" data-page="cake">
+      <div class="cake-ambient" aria-hidden="true"></div>
+      <div class="page-inner cake-scene">
+        <h1 class="cake-title">Happy Birthday My Love <span class="heart">❤️</span></h1>
+        <p class="cake-wish" id="cakeWishText">Close your eyes and make a wish…</p>
+
+        <div class="cake-stage" id="cakeStage">
+          <div class="cake-sparkle-burst" id="cakeSparkleBurst" aria-hidden="true"></div>
+          <div class="cake-real" id="birthdayCake">
+            <div class="cake-shadow"></div>
+            <div class="cake-plate"></div>
+            <div class="cake-body">
+              <div class="cake-tier cake-tier--bottom"></div>
+              <div class="cake-tier cake-tier--middle"></div>
+              <div class="cake-tier cake-tier--top">
+                <div class="cake-icing-swirl"></div>
+              </div>
+              <div class="cake-candle-wrap" id="cakeCandle">
+                <div class="candle-wick"></div>
+                <div class="candle-stick"></div>
+                <div class="candle-flame" id="candleFlame" aria-hidden="true">
+                  <span class="flame-inner"></span>
+                  <span class="flame-outer"></span>
+                  <span class="flame-glow"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="blow-wind" id="blowWind" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Cinematic Love Letter -->
+    <section id="letter" class="page page--letter" data-page="letter">
+      <div class="letter-vignette" id="letterVignette" aria-hidden="true"></div>
+      <div class="letter-cinematic">
+        <div class="envelope-float-wrap" id="envelopeWrap">
+          <div class="envelope-sealed" id="envelopeSealed">
+            <div class="env-body"></div>
+            <div class="env-flap"></div>
+            <div class="env-fold-left"></div>
+            <div class="env-fold-right"></div>
+            <span class="env-seal">💌</span>
+          </div>
+        </div>
+
+        <div class="letter-focus hidden" id="letterFocus">
+          <article class="letter-paper-full">
+            <p class="letter-dear">My Dearest,</p>
+            <p>You are the most special person in my life. Every day with you feels like a gift.</p>
+            <p>I'm so lucky to have you — your smile, your laugh, the way you make ordinary moments magical.</p>
+            <p>On your birthday: you are loved more than yesterday. Always more.</p>
+            <p class="letter-sign">Forever yours, <em>with all my love</em> 💕</p>
+          </article>
+          <button type="button" class="btn btn-primary" id="letterNext" data-sound="click">Continue ❤️</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Are you single? -->
+    <section id="single" class="page" data-page="single">
+      <div class="page-inner single-scene">
+        <h2 class="single-question">Are you single?</h2>
+        <p class="single-hint" id="singleHint">Be honest… 😏</p>
+        <div class="single-arena" id="singleArena">
+          <button type="button" class="btn btn-yes" id="btnYes" data-sound="click">Yes</button>
+          <button type="button" class="btn btn-no" id="btnNo">No</button>
+        </div>
+        <p class="single-tease hidden" id="singleTease"></p>
+      </div>
+    </section>
+
+    <!-- 4. Final romance sequence (cinematic + proposal) -->
+    <section id="romance" class="page page--romance" data-page="romance">
+      <div class="romance-cinematic">
+        <div class="romance-screen-glow" id="romanceScreenGlow" aria-hidden="true"></div>
+
+        <div class="cinema-stage" id="cinemaStage">
+          <p class="cinema-text" id="cinemaText"></p>
+        </div>
+
+        <div class="romance-proposal hidden" id="romanceProposal">
+          <h2 class="proposal-question">Can you be my girlfriend?</h2>
+          <div class="proposal-buttons" id="proposalArena">
+            <button type="button" class="btn btn-proposal-yes" id="proposalYes">Yes ❤️</button>
+            <button type="button" class="btn btn-proposal-no" id="proposalNo">No</button>
+          </div>
+          <p class="proposal-tease hidden" id="proposalTease"></p>
+        </div>
+
+        <div class="float-celebration" id="floatCelebration" aria-hidden="true"></div>
+
+        <div class="no-reaction-panel hidden" id="noReactionPanel">
+          <img src="images/no-side.jpg" alt="" id="noReactionImg" />
+          <p class="no-reaction-fallback hidden" id="noReactionFallback">😏</p>
+        </div>
+
+        <div class="romance-celebration hidden" id="romanceCelebration">
+          <h2 class="celebration-message">I knew it… ❤️<br />Happy Birthday My Love</h2>
+          <div class="lyrics-block">
+            <div class="lyrics-title">Sugar — Maroon 5</div>
+            <div class="lyrics-lines">
+              <p>I'm hurting, baby, I'm broken down<br />I need your loving, loving<br />I need it now<br />When I'm without you<br />I'm something weak<br />You got me begging, begging<br />I'm on my knees</p>
+              <p>I don't wanna be needing your love<br />I just wanna be deep in your love<br />And it's killing me when you're away, ooh, baby<br />'Cause I really don't care where you are<br />I just wanna be there where you are<br />And I gotta get one little taste</p>
+              <p>Your sugar<br />Yes, please<br />Won't you come and put it down on me?<br />I'm right here, 'cause I need<br />Little love, a little sympathy<br />Yeah, you show me good loving<br />Make it alright<br />Need a little sweetness in my life<br />Your sugar<br />Yes, please<br />Won't you come and put it down on me?</p>
+              <p>My broken pieces<br />You pick them up<br />Don't leave me hanging, hanging<br />Come give me some<br />When I'm without ya<br />I'm so insecure<br />You are the one thing, one thing<br />I'm living for</p>
+              <p>I don't wanna be needing your love<br />I just wanna be deep in your love<br />And it's killing me when you're away, ooh, baby<br />'Cause I really don't care where you are<br />I just wanna be there where you are<br />And I gotta get one little taste</p>
+              <p>Your sugar<br />Yes, please<br />Won't you come and put it down on me?<br />I'm right here<br />'Cause I need<br />Little love, a little sympathy<br />Yeah, you show me good loving<br />Make it alright<br />Need a little sweetness in my life<br />Your sugar! (sugar!)<br />Yes, please (yes, please)<br />Won't you come and put it down on me?</p>
+              <p>Yeah<br />I want that red velvet<br />I want that sugar sweet<br />Don't let nobody touch it<br />Unless that somebody's me<br />I gotta be your man<br />There ain't no other way<br />'Cause girl you're hotter than a southern California day</p>
+              <p>I don't wanna play no games<br />You don't gotta be afraid<br />Don't give me all that shy shit<br />No make-up on<br />That's my</p>
+              <p>Sugar<br />Yes, please (please)<br />Won't you come and put it down on me (down on me)?<br />I'm right here (right here), 'cause I need ('cause I need)<br />Little love, a little sympathy<br />So, baby, (yeah) you show me good loving<br />Make it alright<br />Need a little sweetness in my life<br />Your sugar! (sugar!)<br />Yes, please (yes, please)<br />Won't you come and put it down on me? (Down on me)</p>
+              <p>Sugar<br />Yes, please<br />Won't you come and put it down on me? (Down on me!)<br />I'm right here, 'cause I need (I'm right here, 'cause I need)<br />Little love, a little sympathy<br />Yeah, you show me good loving<br />Make it alright<br />Need a little sweetness in my life</p>
+              <p>Your sugar! (sugar!)<br />Yes, please (yes, please)<br />Won't you come and put it down on me? (down on me, down on me)</p>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" id="celebrationContinue" data-sound="click">Continue 💕</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Quiz -->
+    <section id="quiz" class="page" data-page="quiz">
+      <div class="page-inner quiz-wrap">
+        <h2 class="section-title">Our Little Quiz</h2>
+        <p class="section-sub">How well do we know each other? 💫</p>
+        <div id="quizContainer"></div>
+        <button type="button" class="btn btn-secondary hidden" id="quizNext" data-sound="click">See Our Memories</button>
+      </div>
+    </section>
+
+    <!-- 6. Memories -->
+    <section id="memories" class="page" data-page="memories">
+      <div class="page-inner">
+        <h2 class="section-title">Our Memories</h2>
+        <p class="section-sub">Moments I'll cherish forever</p>
+        <div class="memory-grid">
+          <article class="memory-card fade-in-stagger">
+            <div class="memory-photo">
+              <img src="images/first-photo.jpg" alt="First photo together" onerror="this.parentElement.classList.add('placeholder')" />
+              <span class="placeholder-label">First photo together</span>
+            </div>
+            <p class="memory-caption">The day everything changed — when I knew you were someone extraordinary.</p>
+          </article>
+          <article class="memory-card fade-in-stagger">
+            <div class="memory-photo">
+              <img src="images/favorite-moment.jpg" alt="Favorite moment" onerror="this.parentElement.classList.add('placeholder')" />
+              <span class="placeholder-label">Favorite moment</span>
+            </div>
+            <p class="memory-caption">My favorite moment with you — pure happiness, just us, perfect.</p>
+          </article>
+          <article class="memory-card fade-in-stagger">
+            <div class="memory-photo">
+              <img src="images/funny-moment.jpg" alt="Funny moment" onerror="this.parentElement.classList.add('placeholder')" />
+              <span class="placeholder-label">Funny moment</span>
+            </div>
+            <p class="memory-caption">The laugh that still makes me smile — you are my joy.</p>
+          </article>
+        </div>
+        <button type="button" class="btn btn-secondary" id="memoriesNext" data-sound="click">One Last Message</button>
+      </div>
+    </section>
+
+    <!-- 7. Final -->
+    <section id="final" class="page" data-page="final">
+      <div class="page-inner final-wrap fade-in">
+        <div class="final-glow"></div>
+        <h2 class="final-title">No matter what happens,<br />I will always choose you.</h2>
+        <p class="final-text">Happy Birthday my love, from your lover ❤️</p>
+        <p class="final-sub">Thank you for being you. Today and always — you are my everything.</p>
+        <button type="button" class="btn btn-primary" id="replayBtn" data-sound="click">Replay Surprise</button>
+      </div>
+    </section>
+  </main>
+
+  <audio id="bgMusic" loop preload="auto" src="music/YTDown_YouTube_Sugar-Maroon-5-Clean-Version_Media_WklihNrJTrM_009_128k.mp3"></audio>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
